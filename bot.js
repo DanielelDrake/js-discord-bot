@@ -9,7 +9,7 @@ const client = new Discord.Client({
     ]
 })
 
-const prefix = "!";
+const prefix = "$";
 
 
 client.on("ready", () => {
@@ -27,7 +27,7 @@ client.on("messageCreate", function(message) {
     if(command == "ping") {
         const timeTaken = Date.now() - message.createdTimestamp;
         message.reply('pong!');
-        console.log('Message had the latency od ${timeTaken}ms.');
+        console.log('Message had the latency of ${timeTaken}ms.');
     }
 })
 
