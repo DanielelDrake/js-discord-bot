@@ -1,0 +1,26 @@
+{
+  "name": "js-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielelDrake/js-discord-bot.git"
+  },
+  "keywords": [
+    "Discord"
+  ],
+  "author": "Daniel Habenicht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielelDrake/js-discord-bot/issues"
+  },
+  "homepage": "https://github.com/DanielelDrake/js-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.5.0"
+  }
+}
