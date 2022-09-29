@@ -139,11 +139,10 @@ If You want to host the Bot on your local machine, install these packages first:
 2. Install all requried Modules
 3. Enter your Token in `config.js`
    ```js
-   const API_KEY = 'ENTER YOUR Discord-Token';
+   const BOT_TOKEN = 'ENTER YOUR Discord-Token';
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
