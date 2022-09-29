@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
 
-const { Client, GatewayIntentBits, messageLink, channelLink } = require('discord.js');
+const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -11,6 +11,8 @@ const client = new Discord.Client({
         GatewayIntentBits.MessageContent,
     ]
 });
+
+
 
 const prefix = "!";
 
@@ -34,7 +36,6 @@ client.on("messageCreate", (msg, member) => {
     else {
         if(msg.content === 'role pls') {
             console.log('roles updated')
-           // msg.author.roles.add(author.guild.roles.cache.find(i => i.name === 'Member'))
         }
         else if(msg.content === 'test'){
             console.log('testing');
@@ -49,7 +50,6 @@ client.on("messageCreate", (msg, member) => {
     }
     
 })
-
 
 client.login(config.BOT_TOKEN);
 
