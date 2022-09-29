@@ -1,5 +1,3 @@
-import express from 'express';
-
 const Discord = require("discord.js");
 const config = require("./config.json");
 
@@ -18,16 +16,18 @@ client.on("ready", () => {
 console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.on('messageCreate', (msg) => {
-    if(msg.author.bot){
-        return;
-    }
+client.on("messageCreate", (msg) => {
 
-    if(msg.content === 'hello') {
-        msg.reply("world!");
+    const message = msg.content
+
+    if(msg.author.bot) {
+        return
+    } else {
+        console.log('message created: ${message}')
+        msg.reply("hello")
     }
+    
 })
-
 
 
 client.login(config.BOT_TOKEN);
