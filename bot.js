@@ -1,4 +1,4 @@
-import {test} from commands/test.js
+import {test} from 'commands/test.js';
 
 
 const Discord = require("discord.js");
