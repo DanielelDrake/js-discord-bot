@@ -12,9 +12,11 @@ const client = new Discord.Client({
     ]
 });
 
-
-
 const prefix = "!";
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
+
+
 
 
 client.on("ready", () => {
@@ -34,12 +36,12 @@ client.on("messageCreate", (msg, member) => {
         return
     } 
     else {
-        if(msg.content === 'role pls') {
-            console.log('roles updated')
-        }
-        else if(msg.content === 'test'){
-            console.log('testing');
-            msg.reply("testing")
+        if (msg.content.startsWith(prefix + 'command')){
+            console.log("command detected")
+            if(command == 'ping') {
+                console.log('ping-command detected')
+                msg.channel.reply('pong!')
+            }
         }
         else{
             console.log("random msg")
