@@ -33,7 +33,7 @@ client.on("guildMemberAdd", (member) => {
 client.on("messageCreate", (msg) => {
 
     if(msg.author.bot) return;
-    if (message.content.indexOf(config.prefix) !== 0) return;
+    if (msg.content.indexOf(config.prefix) !== 0) return;
 
     const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
@@ -43,7 +43,7 @@ client.on("messageCreate", (msg) => {
       } else
     
     if (command === 'blah') {
-        message.channel.send('Meh.');
+        msg.channel.send('Meh.');
     }
     
 })
