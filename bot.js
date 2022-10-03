@@ -13,8 +13,7 @@ const client = new Discord.Client({
 });
 
 const prefix = "!";
-const args = msg.content.slice(prefix.length).trim().split(/ +/g);
-const command = args.shift().toLowerCase();
+
 
 
 
@@ -32,6 +31,10 @@ client.on("guildMemberAdd", (member) => {
 })
 
 client.on("messageCreate", (msg, member) => {
+
+    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
     if(msg.author.bot) {
         return
     } 
