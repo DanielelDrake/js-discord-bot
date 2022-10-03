@@ -1,3 +1,5 @@
-export function test() {
-    console.log('test-function')
+module.exports = {
+    test: function () {
+        console.log('test command')
+    }
 }

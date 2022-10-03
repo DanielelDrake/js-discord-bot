@@ -1,4 +1,4 @@
-import {test} from 'test.js';
+var test = require('./test.js')
 
 
 const Discord = require("discord.js");
@@ -54,7 +54,7 @@ client.on("messageCreate", (msg) => {
         msg.reply("pong!")
       }
     if(command === 'test') {
-        test()
+        test.test()
     }
     
     
