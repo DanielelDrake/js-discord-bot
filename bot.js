@@ -1,3 +1,6 @@
+import {test} from commands/test.js
+
+
 const Discord = require("discord.js");
 const config = require("./config.json");
 
@@ -50,6 +53,9 @@ client.on("messageCreate", (msg) => {
         console.log("ping-pong command detected")
         msg.reply("pong!")
       }
+    if(command === 'test') {
+        test()
+    }
     
     
 })
