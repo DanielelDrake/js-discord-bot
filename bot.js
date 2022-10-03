@@ -33,7 +33,7 @@ client.on("messageCreate", (msg) => {
     //messages:
     if(msg.content === 'hello') {
         console.log('hello requested by: ' + msg.author.username)
-        msg.channel.reply("hello " + "" + msg.author.username + "!")
+        msg.channel.send("hello " + "" + msg.author.username + "!")
     }
     if(msg.content === 'test') {
         console.log('testing')
