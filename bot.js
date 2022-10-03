@@ -1,5 +1,6 @@
-var test = require('./test.js');
-var test = require('commands/ping.js');
+var test = require('./commands_test.js');
+var ping = require('./commands_tictactoe.js');
+var userInfo = require('./commands_userInfo.js')
 
 
 const Discord = require("discord.js");
