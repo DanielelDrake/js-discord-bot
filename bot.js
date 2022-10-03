@@ -30,27 +30,20 @@ client.on("guildMemberAdd", (member) => {
     member.guild.channels.reply("Welcome!")
 })
 
-client.on("messageCreate", (msg, member) => {
+client.on("messageCreate", (msg) => {
 
-    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
+    if(msg.author.bot) return;
+    if (message.content.indexOf(config.prefix) !== 0) return;
+
+    const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-    if(msg.author.bot) {
-        return
-    } 
-    else {
-        if (msg.content.startsWith(prefix + 'command')){
-            console.log("command detected")
-            if(command == 'ping') {
-                console.log('ping-command detected')
-                msg.channel.reply('pong!')
-            }
-        }
-        else{
-            console.log("random msg by: "  + msg.author.username + ": " + msg.content)
-
-        }
-        
+    if (command === 'ping') {
+        console.log("ping-pong command detected")
+      } else
+    
+    if (command === 'blah') {
+        message.channel.send('Meh.');
     }
     
 })
