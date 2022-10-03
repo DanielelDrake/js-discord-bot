@@ -44,8 +44,7 @@ client.on("messageCreate", (msg, member) => {
             }
         }
         else{
-            console.log("random msg")
-            console.log(msg)
+            console.log("random msg by: "  + msg.author.username + ": " + msg.content)
 
         }
         
