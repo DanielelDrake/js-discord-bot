@@ -33,6 +33,7 @@ client.on("messageCreate", (msg) => {
     //messages:
     if(msg.content === 'hello') {
         console.log('hello requested by: ' + msg.author.username)
+        msg.channel.reply("hello " + "" + msg.author.username + "!")
     }
     if(msg.content === 'test') {
         console.log('testing')
@@ -41,7 +42,7 @@ client.on("messageCreate", (msg) => {
     
     if (msg.content.indexOf(config.prefix) !== 0) return;
 
-    const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
+    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     //comands:
