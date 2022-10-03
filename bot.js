@@ -48,11 +48,7 @@ client.on("messageCreate", (msg) => {
     //comands:
     if (command === 'ping') {
         console.log("ping-pong command detected")
-      } else
-    
-    if (command === 'blah') {
-        msg.channel.send('Meh.');
-    }
+      }
     
     
 })
