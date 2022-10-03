@@ -38,6 +38,7 @@ client.on("messageCreate", (msg) => {
     const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
+    //comands:
     if (command === 'ping') {
         console.log("ping-pong command detected")
       } else
@@ -46,6 +47,10 @@ client.on("messageCreate", (msg) => {
         msg.channel.send('Meh.');
     }
     
+    //messages:
+    if(msg.content == 'hello') {
+        console.log('hello requested by: ' + msg.author.username)
+    }
 })
 
 client.login(config.BOT_TOKEN);
