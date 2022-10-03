@@ -29,6 +29,16 @@ client.on("guildMemberAdd", (member) => {
 client.on("messageCreate", (msg) => {
 
     if(msg.author.bot) return;
+
+    //messages:
+    if(msg.content === 'hello') {
+        console.log('hello requested by: ' + msg.author.username)
+    }
+    if(msg.content === 'test') {
+        console.log('testing')
+    }
+
+    
     if (msg.content.indexOf(config.prefix) !== 0) return;
 
     const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -43,13 +53,7 @@ client.on("messageCreate", (msg) => {
         msg.channel.send('Meh.');
     }
     
-    //messages:
-    if(msg.content === 'hello') {
-        console.log('hello requested by: ' + msg.author.username)
-    }
-    if(msg.content === 'test') {
-        console.log('testing')
-    }
+    
 })
 
 client.login(config.BOT_TOKEN);
