@@ -40,7 +40,7 @@ client.on("messageCreate", (msg) => {
     }
 
     
-    if (msg.content.indexOf(config.prefix) !== 0) return;
+    if (msg.content.indexOf(prefix) !== 0) return;
 
     const args = msg.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
