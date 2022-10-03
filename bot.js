@@ -1,4 +1,5 @@
-var test = require('./test.js')
+var test = require('./test.js');
+var test = require('commands/ping.js');
 
 
 const Discord = require("discord.js");
