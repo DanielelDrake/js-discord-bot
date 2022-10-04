@@ -9,6 +9,7 @@ const config = require("./config.json");
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
 const commands_userInfo = require('./commands_userInfo.js');
+const commands_info = require('./commands_info.js');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -63,7 +64,9 @@ client.on("messageCreate", (msg) => {
     if(command === 'TimeOnServer') {
         commands_userInfo.timeOnServer(msg);
     }
-    
+    if(command === 'help') {
+        commands_info.commandList()
+    }
     
 })
 
