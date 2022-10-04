@@ -21,6 +21,6 @@ module.exports = {
             .setTimestamp()
             .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-        msg.reply({ embeds: [exampleEmbed] });
+        console.log("command List")
     }
 }
