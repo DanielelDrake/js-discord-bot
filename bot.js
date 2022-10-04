@@ -84,7 +84,7 @@ client.on("messageCreate", (msg) => {
             .setTimestamp()
             .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
         
-        channel.send({ embeds: [exampleEmbed] });
+        msg.channel.send({ embeds: [exampleEmbed] });
 
         }
 
