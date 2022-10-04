@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 module.exports = {
     commandList: function () {
         let embed = new MessageEmbed()

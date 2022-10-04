@@ -6,6 +6,7 @@ var userInfo = require('./commands_info.js')
 
 const Discord = require("discord.js");
 const config = require("./config.json");
+const { MessageEmbed } = require("discord.js")
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
 const commands_userInfo = require('./commands_userInfo.js');
