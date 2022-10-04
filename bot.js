@@ -63,10 +63,11 @@ client.on("messageCreate", (msg) => {
         test.test()
     }
     if(command === 'TimeOnServer') {
-        commands_userInfo.timeOnServer(msg);
+        console.log('TimeOnServer requested by: ' + msg.author.username)
+        commands_userInfo.memberSince(msg);
     }
     if(command === 'help') {
-        commands_info.commandList()
+        commands_info.commandList(msg)
     }
     
 })
