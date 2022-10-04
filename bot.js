@@ -7,6 +7,7 @@ const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
+const commands_userInfo = require('./commands_userInfo.js');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -63,6 +64,8 @@ client.on("messageCreate", (msg) => {
     if (command === 'TimeOnServer') {
         console.log('TimeOnServer requested by: ' + msg.author.username)
         commands_userInfo.memberSince(msg);
+
+        msg.reply(commands_userInfo.memberSince(msg))
     }
 
     if (command === 'help') {
@@ -70,7 +73,8 @@ client.on("messageCreate", (msg) => {
             .setColor(0x0099FF)
             .setTitle('My Bot')
             .setURL('https://github.com/DanielelDrake/js-discord-bot')
-            .setAuthor({ name: 'Daniel', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://github.com/DanielelDrake/js-discord-bot' })
+            .setAuthor({ name: 'Daniel', iconURL: 'https://i.imgur.com/AfFp7pu.png', 
+                url: 'https://github.com/DanielelDrake/js-discord-bot' })
             .setDescription('Some description here')
             .setThumbnail('https://i.imgur.com/AfFp7pu.png')
             .addFields(

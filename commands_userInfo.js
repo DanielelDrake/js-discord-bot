@@ -2,6 +2,10 @@ const { messageLink } = require("discord.js")
 
 module.exports = {
     memberSince: function (msg) {
-        console.log('Time on Server requested for User: ' + msg.author.username)
+        const time = msg.author.time
+        return time;
+        console.log('Time on Server sent for User: ' + msg.author.username)
+
+
     }
 }
