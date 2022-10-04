@@ -76,11 +76,13 @@ client.on("messageCreate", (msg) => {
             .addFields(
                 { name: 'Commands:', value: 'Some value here' },
                 { name: '\u200B', value: '\u200B' },
-                { name: '!test', value: 'test if the Bot is running correctly', inline: true },
+                { name: '!test', value: 'test if the Bot is running', inline: true },
                 { name: '!help', value: 'show this modal', inline: true },
             )
             .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
+            .setImage('https://i.imgur.com/AfFp7pu.png')
             .setTimestamp()
+            .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
         
         msg.channel.send({ embeds: [exampleEmbed] });
 
