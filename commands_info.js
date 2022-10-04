@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js")
 
 module.exports = {
 
-    commands_info: function () {
+    commandList: function () {
         const exampleEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
             .setTitle('Some title')
