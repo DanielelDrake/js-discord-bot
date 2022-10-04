@@ -18,34 +18,27 @@ const client = new Discord.Client({
     ]
 });
 
-const prefix = "!";
 
+//async functions
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.on("guildMemberRemove", () => {
-    console.log('Member removed!')
+client.on("guildMemberRemove", (member) => {
+    console.log(member.username + ' was removed!')
 })
 
 client.on("guildMemberAdd", (member) => {
-    member.guild.channels.reply("Welcome!")
+    member.guild.channels.reply("Welcome " + member.username + "!")
 })
+
+
+//prefix for commands
+const prefix = "!";
 
 client.on("messageCreate", (msg) => {
 
     if (msg.author.bot) return;
-
-    //messages:
-    if (msg.content === 'hello') {
-        console.log('hello requested by: ' + msg.author.username)
-        msg.channel.send("hello " + "" + msg.author.username + "!")
-    }
-    if (msg.content === 'test') {
-        console.log('testing')
-    }
-
-
     if (msg.content.indexOf(prefix) !== 0) return;
 
     const args = msg.content.slice(prefix.length).trim().split(/ +/g);
@@ -53,12 +46,7 @@ client.on("messageCreate", (msg) => {
 
     //comands:
     if (command === 'ping') {
-        console.log("ping-pong Match requested by " + msg.author.username)
         msg.reply("pong!")
-    }
-
-    if (command === 'test') {
-        test.test()
     }
 
     if (command === 'time') {
@@ -81,7 +69,7 @@ client.on("messageCreate", (msg) => {
                 { name: 'Commands:', value: 'For all commands use the prefix "!"' },
                 { name: '\u200B', value: '\u200B' },
                 { name: 'help', value: 'see this modal', inline: false },
-                { name: 'ping', value: 'lose in ping pong', inline: false },
+                { name: '...', value: '...', inline: false },
             )
             .addFields({ name: 'Inline field title', value: 'Some value here', inline: false })
             .setImage('https://i.imgur.com/AfFp7pu.png')
@@ -92,6 +80,9 @@ client.on("messageCreate", (msg) => {
 
     }
 
+    if(command === 'rl-server') {
+        console.log('Server Status for Rocket League requested')
+    }
 })
 
 client.login(config.BOT_TOKEN);
