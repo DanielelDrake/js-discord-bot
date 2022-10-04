@@ -6,7 +6,7 @@ var userInfo = require('./commands_info.js')
 
 const Discord = require("discord.js");
 const config = require("./config.json");
-const { MessageEmbed } = require("discord.js")
+const { MessageEmbed, makeURLSearchParams } = require("discord.js")
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
 const commands_userInfo = require('./commands_userInfo.js');
@@ -56,7 +56,7 @@ client.on("messageCreate", (msg) => {
 
     //comands:
     if (command === 'ping') {
-        console.log("ping-pong command detected")
+        console.log("ping-pong Match requested by " + msg.author.username)
         msg.reply("pong!")
       }
     if(command === 'test') {
@@ -67,7 +67,8 @@ client.on("messageCreate", (msg) => {
         commands_userInfo.memberSince(msg);
     }
     if(command === 'help') {
-        commands_info.commandList(msg)
+        console.log("command List requested by " + msg.author.username)
+        channel.send(commands_info.commandList())
     }
     
 })

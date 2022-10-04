@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js")
+const { EmbedBuilder, channelLink, AttachmentBuilder } = require("discord.js")
 
 module.exports = {
 
@@ -21,6 +21,8 @@ module.exports = {
             .setTimestamp()
             .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-        console.log("command List")
+        console.log("command List sent")
+        
+        
     }
 }
