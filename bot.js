@@ -7,8 +7,6 @@ const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
-const commands_userInfo = require('./commands_userInfo.js');
-const commands_info = require('./commands_info.js');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -57,7 +55,7 @@ client.on("messageCreate", (msg) => {
         console.log("ping-pong Match requested by " + msg.author.username)
         msg.reply("pong!")
     }
-    
+
     if (command === 'test') {
         test.test()
     }
