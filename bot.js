@@ -74,10 +74,10 @@ client.on("messageCreate", (msg) => {
             .setDescription('Some description here')
             .setThumbnail('https://i.imgur.com/AfFp7pu.png')
             .addFields(
-                { name: 'Regular field title', value: 'For all commands use the prefix "!"' },
+                { name: 'Commands:', value: 'For all commands use the prefix "!"' },
                 { name: '\u200B', value: '\u200B' },
-                { name: 'help', value: 'see this modal', inline: true },
-                { name: 'ping', value: 'lose in ping pong', inline: true },
+                { name: 'help', value: 'see this modal', inline: false },
+                { name: 'ping', value: 'lose in ping pong', inline: false },
             )
             .addFields({ name: 'Inline field title', value: 'Some value here', inline: false })
             .setImage('https://i.imgur.com/AfFp7pu.png')
