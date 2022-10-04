@@ -79,7 +79,7 @@ client.on("messageCreate", (msg) => {
                 { name: 'help', value: 'see this modal', inline: true },
                 { name: 'ping', value: 'lose in ping pong', inline: true },
             )
-            .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
+            .addFields({ name: 'Inline field title', value: 'Some value here', inline: false })
             .setImage('https://i.imgur.com/AfFp7pu.png')
             .setTimestamp()
             .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
