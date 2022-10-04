@@ -5,7 +5,6 @@ const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
-const commands_userInfo = require('./commands_userInfo.js');
 const commands = require('./commands.js');
 const client = new Discord.Client({
     intents: [
