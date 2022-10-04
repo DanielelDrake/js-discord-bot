@@ -1,12 +1,14 @@
 var test = require('./commands_test.js');
 var ping = require('./commands_tictactoe.js');
 var userInfo = require('./commands_userInfo.js')
+var userInfo = require('./commands_info.js')
 
 
 const Discord = require("discord.js");
 const config = require("./config.json");
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
+const commands_userInfo = require('./commands_userInfo.js');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -57,6 +59,9 @@ client.on("messageCreate", (msg) => {
       }
     if(command === 'test') {
         test.test()
+    }
+    if(command === 'TimeOnServer') {
+        commands_userInfo.timeOnServer(msg);
     }
     
     
