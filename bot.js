@@ -68,25 +68,25 @@ client.on("messageCreate", (msg) => {
     if (command === 'help') {
         const exampleEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
-            .setTitle('How to Use the Bot')
-            .setURL('https://github.com/DanielelDrake/js-discord-bot')
-            .setAuthor({ name: 'Daniel', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
-            .setDescription('')
+            .setTitle('Some title')
+            .setURL('https://discord.js.org/')
+            .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+            .setDescription('Some description here')
             .setThumbnail('https://i.imgur.com/AfFp7pu.png')
             .addFields(
-                { name: 'Commands:', value: 'Some value here' },
+                { name: 'Regular field title', value: 'Some value here' },
                 { name: '\u200B', value: '\u200B' },
-                { name: '!test', value: 'test if the Bot is running', inline: true },
-                { name: '!help', value: 'show this modal', inline: true },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
             )
             .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
             .setImage('https://i.imgur.com/AfFp7pu.png')
             .setTimestamp()
             .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
-        
+
         msg.channel.send({ embeds: [exampleEmbed] });
 
-        }
+    }
 
 })
 
