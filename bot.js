@@ -50,7 +50,6 @@ client.on("messageCreate", (msg) => {
 
     if (command === 'time') {
         console.log('TimeOnServer requested by: ' + msg.author.username)
-        commands_userInfo.memberSince(msg);
 
         msg.reply("" + commands_userInfo.memberSince(msg))
     }
