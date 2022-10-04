@@ -1,8 +1,6 @@
 var test = require('./commands_test.js');
 var ping = require('./commands_tictactoe.js');
 var userInfo = require('./commands_userInfo.js')
-var userInfo = require('./commands_info.js')
-
 
 const Discord = require("discord.js");
 const config = require("./config.json");
@@ -59,13 +57,16 @@ client.on("messageCreate", (msg) => {
         console.log("ping-pong Match requested by " + msg.author.username)
         msg.reply("pong!")
     }
+    
     if (command === 'test') {
         test.test()
     }
+
     if (command === 'TimeOnServer') {
         console.log('TimeOnServer requested by: ' + msg.author.username)
         commands_userInfo.memberSince(msg);
     }
+
     if (command === 'help') {
         const exampleEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
@@ -86,7 +87,7 @@ client.on("messageCreate", (msg) => {
             .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
         
         channel.send({ embeds: [exampleEmbed] });
-        
+
         }
 
 })
