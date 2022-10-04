@@ -1,4 +1,4 @@
-var test = require('./commands_test.js');
+var test = require('./commands.js');
 var ping = require('./commands_tictactoe.js');
 var userInfo = require('./commands_userInfo.js')
 
@@ -8,6 +8,7 @@ const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js"
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
 const commands_userInfo = require('./commands_userInfo.js');
+const commands = require('./commands.js');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -45,8 +46,8 @@ client.on("messageCreate", (msg) => {
     const command = args.shift().toLowerCase();
 
     //comands:
-    if (command === 'ping') {
-        msg.reply("pong!")
+    if (command === 'test') {
+        commands.test()
     }
 
     if (command === 'time') {
