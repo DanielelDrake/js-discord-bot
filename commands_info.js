@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js")
 
 module.exports = {
 
-    commandList: function () {
+    commandList: function (msg) {
         const exampleEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
             .setTitle('Some title')
@@ -21,6 +21,6 @@ module.exports = {
             .setTimestamp()
             .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-        channel.send({ embeds: [exampleEmbed] });
+        msg.channel.send({ embeds: [exampleEmbed] });
     }
 }
