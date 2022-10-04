@@ -68,16 +68,16 @@ client.on("messageCreate", (msg) => {
     if (command === 'help') {
         const exampleEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
-            .setTitle('Some title')
-            .setURL('https://discord.js.org/')
-            .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+            .setTitle('My Bot')
+            .setURL('https://github.com/DanielelDrake/js-discord-bot')
+            .setAuthor({ name: 'Daniel', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://github.com/DanielelDrake/js-discord-bot' })
             .setDescription('Some description here')
             .setThumbnail('https://i.imgur.com/AfFp7pu.png')
             .addFields(
-                { name: 'Regular field title', value: 'Some value here' },
+                { name: 'Regular field title', value: 'For all commands use the prefix "!"' },
                 { name: '\u200B', value: '\u200B' },
-                { name: 'Inline field title', value: 'Some value here', inline: true },
-                { name: 'Inline field title', value: 'Some value here', inline: true },
+                { name: 'help', value: 'see this modal', inline: true },
+                { name: 'ping', value: 'lose in ping pong', inline: true },
             )
             .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
             .setImage('https://i.imgur.com/AfFp7pu.png')
