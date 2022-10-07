@@ -1,11 +1,10 @@
-var test = require('./commands.js');
+var commands = require('./commands.js');
 
 const Discord = require("discord.js");
 const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
-const commands = require('./commands.js');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -24,6 +23,7 @@ client.on("ready", () => {
 
 client.on("guildMemberRemove", (member) => {
     console.log(member.username + ' was removed!')
+    member.channel.send( member.username + "wurde gebannt!")
 })
 
 client.on("guildMemberAdd", (member) => {
@@ -32,7 +32,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 //prefix for commands
-const prefix = "!";
+const prefix = "$";
 
 client.on("messageCreate", (msg) => {
 
@@ -63,7 +63,7 @@ client.on("messageCreate", (msg) => {
             .setDescription('Some description here')
             .setThumbnail('https://i.imgur.com/AfFp7pu.png')
             .addFields(
-                { name: 'Commands:', value: 'For all commands use the prefix "!"' },
+                { name: 'Commands:', value: 'For all commands use the prefix "$"' },
                 { name: '\u200B', value: '\u200B' },
                 { name: 'help', value: 'see this modal', inline: false },
                 { name: '...', value: '...', inline: false },
@@ -79,6 +79,51 @@ client.on("messageCreate", (msg) => {
 
     if(command === 'rl-server') {
         console.log('Server Status for Rocket League requested')
+    }
+
+    //admin commands
+    if(command === 'ban') {
+        //check for Admin-Permissions
+        if(msg.member.roles.cache.has('1025086853742866532')) {
+            //log the ban-attempt
+            console.log(msg.author.username + " wants to ban somebody")
+            //check for args
+            if (!args.length) {
+                return msg.reply(`You didn't provide any arguments, ${msg.author}!`);
+            }
+            else {
+                //perform ban
+                let victim = msg.mentions.members.first();
+                msg.reply("User " + victim.user.username + " got banned by " + msg.author.username) 
+                victim.ban();
+                
+            }
+        }
+        else {
+            //respond with error message
+            msg.reply("Da hast du wohl nicht die nötigen Rechte... Wende dich an einen Admin!")
+        }
+    }
+    if(command === 'kick') {
+        //check for Admin-Permissions
+        if(msg.member.roles.cache.has('1025086853742866532')) {
+            //log the kick-attempt
+            console.log(msg.author.username + " wants to kick somebody")
+            //check for args
+            if(!args.length) {
+                return msg.reply("You didn't provide any Arguments!")
+            }
+            else {
+                //perform the kick
+                let victim = msg.mentions.members.first();
+                msg.reply("User " + victim.user.username + " got kicked by " + msg.author.username) 
+                victim.kick();
+            }
+        }
+        else {
+            //respond with error message
+            msg.reply("Da hast du wohl nicht die nötigen Rechte... Wende dich an einen Admin!")
+        }
     }
 })
 
