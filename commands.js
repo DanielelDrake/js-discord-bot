@@ -3,6 +3,6 @@ const Discord = require("discord.js");
 
 module.exports = {
     test: function () {
-        console.log('test command')
+        console.log('testing started')
     }
 }

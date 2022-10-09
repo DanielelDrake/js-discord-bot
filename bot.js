@@ -21,19 +21,19 @@ client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.on("guildMemberRemove", (member) => {
-    console.log(member.username + ' was removed!')
-    member.channel.send( member.username + "wurde gebannt!")
-})
-
 client.on("guildMemberAdd", (member) => {
     member.guild.channels.reply("Welcome " + member.username + "!")
+})
+
+client.on("typingStart", (member) => {
+    console.log("somebody's typing!")
 })
 
 
 //prefix for commands
 const prefix = "$";
 
+//user commands prefix+commmand+arg
 client.on("messageCreate", (msg) => {
 
     if (msg.author.bot) return;
@@ -44,6 +44,7 @@ client.on("messageCreate", (msg) => {
 
     //comands:
     if (command === 'test') {
+        console.log("test requested")
         commands.test()
     }
 
