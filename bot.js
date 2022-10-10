@@ -25,11 +25,6 @@ client.on("guildMemberAdd", (member) => {
     member.guild.channels.reply("Welcome " + member.username + "!")
 })
 
-client.on("typingStart", (member) => {
-    console.log("somebody's typing!")
-})
-
-
 //prefix for commands
 const prefix = "$";
 
