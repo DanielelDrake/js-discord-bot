@@ -12,7 +12,7 @@ class Database {
 
         mongoose.connect(config.MONGO_URL, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
         }).then(() => {
             console.log("Successfully connected to Database!");
             this.connection = mongoose.connection;
