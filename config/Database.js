@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-require ("./config.js")
+require ("./config.json")
 
 
 class Database {
