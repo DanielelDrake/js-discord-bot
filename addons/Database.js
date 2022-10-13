@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const MONGO_URL=""
+const MONGO_URL="mongodb://192.168.178.57/Bot/js-discord-bot"
 
 class Database {
     constructor() {
