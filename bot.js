@@ -4,7 +4,7 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
-const Database = require("./config/Database");
+const Database = require("./addons/Database");
 
 const db = new Database();
 
