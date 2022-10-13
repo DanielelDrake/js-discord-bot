@@ -4,7 +4,14 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
+const Database = require("./config/Database")
+
+const db = new Database();
+
+db.connect();
+
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
+const { connect } = require('mongoose');
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.DirectMessages,
@@ -120,6 +127,16 @@ client.on("messageCreate", (msg) => {
             //respond with error message
             msg.reply("Da hast du wohl nicht die nötigen Rechte... Wende dich an einen Admin!")
         }
+    }
+})
+
+//passive Chat-Moderation
+client.on("messageCreate", (msg) => {
+    if (msg.author.bot) return;
+
+    if (msg.content.includes("Asshole")) {
+        console.log("Insult by -" + msg.author.username + "- detected!")
+        msg.reply("first Strike!")
     }
 })
 
