@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
-require("./config.json")
+
+const MONGO_URL=""
 
 class Database {
     constructor() {
@@ -9,7 +10,7 @@ class Database {
     connect() {
         console.log("Connecting to Database ....")
 
-        mongoose.connect(config.MONGO_URL, {
+        mongoose.connect(MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         }).then(() => {
