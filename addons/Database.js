@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const MONGO_URL="mongodb://192.168.178.57/Bot/js-discord-bot"
+const MONGO_URL="localhost:127.0.0.1:27017"
 
 class Database {
     constructor() {
@@ -9,7 +9,6 @@ class Database {
 
     connect() {
         console.log("Connecting to Database ....")
-
         mongoose.connect(MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
