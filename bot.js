@@ -107,6 +107,7 @@ client.on("messageCreate", (msg) => {
     }
 
     if(command === 'DatabaseTest') {
+        console.log("Database Test started")
         msg.reply(pool.query("SELECT * FROM user"));
         msg.reply(".")
     }
