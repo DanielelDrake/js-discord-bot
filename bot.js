@@ -28,20 +28,6 @@ const pool = mariadb.createPool({
      port: '/var/run/mysqld/mysqld.sock',
      connectionLimit: 5
 });
-async function asyncFunction() {
-  let conn;
-  console.log("Connectiong to Database ...")
-  try {
-	conn = await pool.getConnection();
-	const rows = await conn.query("SELECT * from user");
-	console.log(rows); //[ {val: 1}, meta: ... ]
-
-  } catch (err) {
-	throw err;
-  } finally {
-	if (conn) return conn.end();
-  }
-}
 
 
 
