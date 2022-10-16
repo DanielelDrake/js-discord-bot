@@ -22,7 +22,7 @@ const mariadb = require('mariadb');
 
 const pool = mariadb.createPool({
      host: 'localhost', 
-     user:'root', 
+     user:'Daniel', 
      password: 'Wirklichreal1?',
      database: 'DiscordUsers',
      port: '/var/run/mysqld/mysqld.sock',
