@@ -107,7 +107,6 @@ client.on("messageCreate", (msg) => {
     }
 
     if(command === 'DatabaseTest') {
-        dbEdit.ShowUser();
         msg.reply(pool.query("SELECT * FROM user"));
         msg.reply(".")
     }
