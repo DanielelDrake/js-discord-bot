@@ -17,6 +17,7 @@ const client = new Discord.Client({
 
 
 const mongoose = require('mongoose');
+const User = require('./schemas/UserSchema')
 
 
 //async functions
@@ -36,7 +37,7 @@ client.on("guildMemberAdd", (member) => {
 const prefix = "$";
 
 //user commands prefix+commmand+arg
-client.on("messageCreate", (msg) => {
+client.on("messageCreate", async (msg) => {
 
     if (msg.author.bot) return;
     if (msg.content.indexOf(prefix) !== 0) return;
@@ -84,16 +85,13 @@ client.on("messageCreate", (msg) => {
     }
 
     if(command === 'db') {
-        console.log("Database Testing!")
-
-        pool.query('SELECT * FROM user', (err, result, fields) => {
-            if(err){
-                throw err;
-            }
-            return console.log(result)
+        console.log('neuen User anlegen ...');
+        const newUser = await User.create({
+            username: msg.author.username,
+            discordId: msg.author.id
         })
-
-        console.log("Database Test is done!")
+        //const savedUser = await newUser.save();
+        console.log('neuen user angelegt')
     }
 
     //admin commands
