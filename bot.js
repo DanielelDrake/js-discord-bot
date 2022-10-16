@@ -107,9 +107,14 @@ client.on("messageCreate", (msg) => {
     }
 
     if(command === 'DatabaseTest') {
-        console.log("Database Test started")
-        msg.reply(pool.query("SELECT * FROM user"));
-        msg.reply(".")
+        console.log("Database Testing!")
+
+        pool.query(`SELECT * FROM user`, (err, result, fields) => {
+            if(err){
+                throw err;
+            }
+            return console.log(result)
+        })
     }
 
     //admin commands
