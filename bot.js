@@ -4,11 +4,30 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
-const Database = require("./addons/Database");
+const mariadb = require('mariadb');
+const pool = mariadb.createPool({
+     host: 'mydb.com', 
+     user:'myUser', 
+     password: 'myPassword',
+     connectionLimit: 5
+});
+async function asyncFunction() {
+  let conn;
+  try {
+	conn = await pool.getConnection();
+	const rows = await conn.query("SELECT 1 as val");
+	console.log(rows); //[ {val: 1}, meta: ... ]
+	const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
+	console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
 
-const db = new Database();
+  } catch (err) {
+	throw err;
+  } finally {
+	if (conn) return conn.end();
+  }
+}
 
-db.connect();
+
 
 const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
 const { connect } = require('mongoose');
