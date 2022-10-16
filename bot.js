@@ -95,7 +95,7 @@ client.on("messageCreate", (msg) => {
     if(command === 'db') {
         console.log("Database Testing!")
 
-        pool.query(`SELECT * FROM user`, (err, result, fields) => {
+        pool.query('SELECT * FROM user', (err, result, fields) => {
             if(err){
                 throw err;
             }
