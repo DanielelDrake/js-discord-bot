@@ -1,17 +1,11 @@
-
-class DatabaseEdit {
-
-     AddUser() {
-        //Fetch Data from new Server-Member
-
-        //Insert fetched Data into Database
-    }
-
-    DeleteUser() {
-        //Fetch username -> id of left Member
-
-        //Delete Dataset
+module.exports = {
+    AddUser: function () {
+        console.log('Adding User')
+    },
+    DeleteUser: function () {
+        console.log('Deleting User')
+    },
+    ShowUser: function () {
+        console.log("Showing Users")
     }
 }
-
-exports:module(DatabaseEdit);

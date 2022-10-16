@@ -17,7 +17,7 @@ const client = new Discord.Client({
     ]
 });
 
-
+const dbEdit = require("./addons/DatabaseEdit");
 const mariadb = require('mariadb');
 
 const pool = mariadb.createPool({
@@ -103,6 +103,10 @@ client.on("messageCreate", (msg) => {
 
     if(command === 'rl-server') {
         console.log('Server Status for Rocket League requested')
+    }
+
+    if(command === 'DatabaseTest') {
+        dbEdit.ShowUser();
     }
 
     //admin commands
