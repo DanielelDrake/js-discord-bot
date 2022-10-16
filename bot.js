@@ -106,7 +106,7 @@ client.on("messageCreate", (msg) => {
         console.log('Server Status for Rocket League requested')
     }
 
-    if(command === 'DatabaseTest') {
+    if(command === 'db') {
         console.log("Database Testing!")
 
         pool.query(`SELECT * FROM user`, (err, result, fields) => {
