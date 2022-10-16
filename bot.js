@@ -115,6 +115,8 @@ client.on("messageCreate", (msg) => {
             }
             return console.log(result)
         })
+
+        console.log("Database Test is done!")
     }
 
     //admin commands
