@@ -1,5 +1,3 @@
-var commands = require('./commands.js');
-
 const Discord = require("discord.js");
 const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
@@ -15,18 +13,6 @@ const client = new Discord.Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
     ]
-});
-
-const dbEdit = require("./addons/DatabaseEdit");
-const mariadb = require('mariadb');
-
-const pool = mariadb.createPool({
-     host: 'localhost', 
-     user:'Daniel', 
-     password: 'Wirklichreal1?',
-     database: 'DiscordUsers',
-     port: '/var/run/mysqld/mysqld.sock',
-     connectionLimit: 5
 });
 
 
@@ -55,7 +41,6 @@ client.on("messageCreate", (msg) => {
     //comands:
     if (command === 'test') {
         console.log("test requested")
-        commands.test()
     }
 
     if (command === 'time') {
