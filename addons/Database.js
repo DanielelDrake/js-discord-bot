@@ -1,24 +1,24 @@
-const MongoClient = require('mongodb').MongoClient
+const mariadb = require('mariadb');
+const pool = mariadb.createPool({
+     host: 'mydb.com', 
+     user:'myUser', 
+     password: 'myPassword',
+     connectionLimit: 5
+});
+async function asyncFunction() {
+  let conn;
+  try {
+	conn = await pool.getConnection();
+	const rows = await conn.query("SELECT 1 as val");
+	console.log(rows); //[ {val: 1}, meta: ... ]
+	const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
+	console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
 
-const MONGO_URL="mongodb://127.0.0.1:27017"
-
-class Database {
-    constructor() {
-        this.connection = null;
-    }
-
-    connect() {
-        console.log("Connecting to Database ....")
-        MongoClient.connect(MONGO_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        }).then(() => {
-            console.log("Successfully connected to Database!");
-            this.connection = MongoClient.connection;
-        }).catch(err => {
-            console.error(err);
-        })
-    }
+  } catch (err) {
+	throw err;
+  } finally {
+	if (conn) return conn.end();
+  }
 }
 
 module.exports = Database;
