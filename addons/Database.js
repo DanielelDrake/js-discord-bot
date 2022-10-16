@@ -9,7 +9,7 @@ class Database {
 
     connect() {
         console.log("Connecting to Database ....")
-        mongoose.connect(MONGO_URL, {
+        MongoClient.connect(MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         }).then(() => {
