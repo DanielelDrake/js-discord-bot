@@ -14,7 +14,7 @@ class Database {
             useUnifiedTopology: true,
         }).then(() => {
             console.log("Successfully connected to Database!");
-            this.connection = mongoose.connection;
+            this.connection = MongoClient.connection;
         }).catch(err => {
             console.error(err);
         })
