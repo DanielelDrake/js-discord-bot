@@ -25,6 +25,7 @@ const pool = mariadb.createPool({
      user:'root', 
      password: 'Wirklichreal1?',
      database: 'DiscordUsers',
+     port: '/var/run/mysqld/mysqld.sock',
      connectionLimit: 5
 });
 async function asyncFunction() {
