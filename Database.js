@@ -1,0 +1,7 @@
+const mysql = require('mysql2');
+
+mysql.createConnection({
+    user: "Daniel",
+    pass: "Wirklichreal1?",
+
+}).then(() => console.log('goof')).catch(err => console.err(err));
