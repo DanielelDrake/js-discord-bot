@@ -4,11 +4,26 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder } = require("discord.js")
 
+
+const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
+const { connect } = require('mongoose');
+const client = new Discord.Client({
+    intents: [
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildBans,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+    ]
+});
+
+
 const mariadb = require('mariadb');
+
 const pool = mariadb.createPool({
-     host: 'mydb.com', 
-     user:'myUser', 
-     password: 'myPassword',
+     host: 'localhost', 
+     user:'root', 
+     password: 'Wirklichreal1?',
      connectionLimit: 5
 });
 async function asyncFunction() {
@@ -27,19 +42,6 @@ async function asyncFunction() {
   }
 }
 
-
-
-const { Client, GatewayIntentBits, Collection, messageLink, channelLink } = require('discord.js');
-const { connect } = require('mongoose');
-const client = new Discord.Client({
-    intents: [
-        GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildBans,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-    ]
-});
 
 
 //async functions
