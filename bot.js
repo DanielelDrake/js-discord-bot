@@ -24,6 +24,7 @@ const pool = mariadb.createPool({
      host: 'localhost', 
      user:'root', 
      password: 'Wirklichreal1?',
+     database: 'DiscordUsers',
      connectionLimit: 5
 });
 async function asyncFunction() {
