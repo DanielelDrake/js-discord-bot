@@ -21,7 +21,7 @@ const mongoose = require('mongoose');
 
 //async functions
 client.on("ready", async() => {
-    await mongoose.connect('mongodb+srv://Daniel:Wirklichreal1?@discordbot.bfwuhgf.mongodb.net/?retryWrites=true&w=majority',
+    await mongoose.connect('mongodb+srv://Daniel:wirklichreal1@discordbot.bfwuhgf.mongodb.net/?retryWrites=true&w=majority',
     {
         keepAlive: true
     })
