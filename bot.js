@@ -16,9 +16,15 @@ const client = new Discord.Client({
 });
 
 
+const mongoose = require('mongoose');
+
 
 //async functions
-client.on("ready", () => {
+client.on("ready", async() => {
+    await mongoose.connect('mongodb+srv://Daniel:Wirklichreal1?@discordbot.bfwuhgf.mongodb.net/?retryWrites=true&w=majority',
+    {
+        keepAlive: true
+    })
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
