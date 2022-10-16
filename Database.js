@@ -1,8 +1,10 @@
-const mysql = require('mysql2');
+import { createConnection } from 'mysql2';
 
-mysql.createConnection({
+createConnection({
     host:"localhost",
     debug: false,
     user: "Daniel",
     password: "Wirklichreal1?"
-}).then(() => console.log('goof')).catch(err => console.log(err));
+}).then((connection) => {
+    connection.execute('CREATE TABLE Guilds(guildId Varchar(255))')
+}).catch(err => console.log(err));
