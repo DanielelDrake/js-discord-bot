@@ -1,4 +1,4 @@
-import { createConnection } from 'mysql2';
+const { createConnection } = require('mysql2');
 
 createConnection({
     host:"localhost",
