@@ -30,6 +30,7 @@ const pool = mariadb.createPool({
 });
 async function asyncFunction() {
   let conn;
+  console.log("Connectiong to Database ...")
   try {
 	conn = await pool.getConnection();
 	const rows = await conn.query("SELECT * from user");
