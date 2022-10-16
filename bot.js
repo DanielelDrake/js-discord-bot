@@ -29,8 +29,17 @@ client.on("ready", async() => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.on("guildMemberAdd", (member) => {
+client.on("guildMemberAdd", async (member) => {
     member.guild.channels.reply("Welcome " + member.username + "!")
+
+    console.log('neuen Datensatz für '+ member.username +' anlegen ...');
+    const newUser = await User.create({
+        username: member.username,
+        discordId: member.id
+    })
+    console.log('neuen Datensatz für User: ' + member.username + ' angelegt')
+
+
 })
 
 //prefix for commands
@@ -85,13 +94,12 @@ client.on("messageCreate", async (msg) => {
     }
 
     if(command === 'db') {
-        console.log('neuen User anlegen ...');
+        console.log(' Testweise!!!!! neuen Datensatz für '+ msg.author.username +' anlegen ...');
         const newUser = await User.create({
             username: msg.author.username,
             discordId: msg.author.id
         })
-        //const savedUser = await newUser.save();
-        console.log('neuen user angelegt')
+        console.log('Testweise!!!!! neuen Datensatz für User: ' + msg.autor.username + ' angelegt')
     }
 
     //admin commands
