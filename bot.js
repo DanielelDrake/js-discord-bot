@@ -94,7 +94,6 @@ client.on("messageCreate", async (msg) => {
     }
 
 
-
     //admin commands
     if (command === 'ban') {
         //check for Admin-Permissions
@@ -152,17 +151,8 @@ client.on("messageCreate", async (msg) => {
         }
 
     }
-    if (command === 'adduser') {
-        if (msg.member.roles.cache.has('1025086853742866532')) {
-            console.log('neuen Datensatz für ' + msg.author.username + ' anlegen ...');
-            const newUser = await User.create({
-                username: msg.author.username,
-                discordId: msg.author.id
-            })
-            console.log('neuen Datensatz für User: ' + msg.author.username + ' angelegt')
-        } else {
-            console.log("keine Rechte!")
-        }
+    if (command === 'setadmin') {
+        
     }
 })
 
