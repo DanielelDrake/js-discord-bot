@@ -22,26 +22,30 @@ const User = require('./schemas/UserSchema')
 
 //async functions
 client.on("ready", async () => {
-    await mongoose.connect(config.MONGO_URL,
-        {
+    //DB-Connect
+    await mongoose.connect(config.MONGO_URL, {
             keepAlive: true
         })
+    console.log('Connected to DB')
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
 client.on("guildMemberAdd", async (member) => {
     member.guild.channels.reply("Welcome " + member.username + "!")
 
+    //neuen User in der Datenbank anlegen
     console.log('neuen Datensatz für ' + member.username + ' anlegen ...');
     const newUser = await User.create({
         username: member.username,
-        discordId: member.id
+        discordId: member.id,
+        admin: false,
+        joined_at: Date.now
     })
     console.log('neuen Datensatz für User: ' + member.username + ' angelegt')
 })
 
 //prefix for commands
-const prefix = "$";
+const prefix = "!";
 
 //user commands prefix+commmand+arg
 client.on("messageCreate", async (msg) => {
@@ -56,43 +60,10 @@ client.on("messageCreate", async (msg) => {
     if (command === 'test') {
         console.log("test requested")
     }
-
-    if (command === 'time') {
-        console.log('TimeOnServer requested by: ' + msg.author.username)
-
-        msg.reply(msg.author.id)
-    }
-
-    if (command === 'help') {
-        const exampleEmbed = new EmbedBuilder()
-            .setColor(0x0099FF)
-            .setTitle('My Bot')
-            .setURL('https://github.com/DanielelDrake/js-discord-bot')
-            .setAuthor({
-                name: 'Daniel', iconURL: 'https://i.imgur.com/AfFp7pu.png',
-                url: 'https://github.com/DanielelDrake/js-discord-bot'
-            })
-            .setDescription('Some description here')
-            .setThumbnail('https://i.imgur.com/AfFp7pu.png')
-            .addFields(
-                { name: 'Commands:', value: 'For all commands use the prefix "$"' },
-                { name: '\u200B', value: '\u200B' },
-                { name: 'help', value: 'see this modal', inline: false },
-                { name: '...', value: '...', inline: false },
-            )
-            .addFields({ name: 'Inline field title', value: 'Some value here', inline: false })
-            .setImage('https://i.imgur.com/AfFp7pu.png')
-            .setTimestamp()
-            .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
-
-        msg.channel.send({ embeds: [exampleEmbed] });
-
-    }
-
-    if (command === 'rl-server') {
-        console.log('Server Status for Rocket League requested')
-    }
-
+        //Server-Status
+        //eigene User Info
+        //help
+        //
 
     //admin commands
     if (command === 'ban') {
@@ -145,14 +116,15 @@ client.on("messageCreate", async (msg) => {
             console.log('Username: ' + res[0].username)
             console.log('Users DiscordId: ' + res[0].discordId)
             console.log('Admin status: ' + res[0].admin)
+            console.log('Member since: ' + res[0].joined_at)
         } else {
             console.log(msg.author.username + " hat versucht auf die DB zuzugreifen!")
             msg.reply("Du hast nicht die nötigen Berechtigungen auf diesem Server!")
         }
 
     }
-    if (command === 'setadmin') {
-        
+    if (command === 'setmod') {
+
     }
 })
 
@@ -166,5 +138,6 @@ client.on("messageCreate", (msg) => {
     }
 })
 
+//login
 client.login(config.BOT_TOKEN);
 

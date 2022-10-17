@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
     admin: mongoose.SchemaTypes.Boolean,
+    mod: mongoose.SchemaTypes.Boolean,
     joined_at: mongoose.SchemaTypes.Date,
 })
 
