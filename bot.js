@@ -47,7 +47,7 @@ client.on("guildMemberAdd", async (member) => {
 //prefix for commands
 const prefix = "!";
 
-//user commands prefix+commmand+arg
+//user commands -> prefix+commmand+arg
 client.on("messageCreate", async (msg) => {
 
     if (msg.author.bot) return;
