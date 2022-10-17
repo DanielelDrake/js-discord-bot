@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.String,
         required: true,
     },
+    admin: mongoose.SchemaTypes.Boolean,
 })
 
 module.exports = mongoose.model('User', UserSchema);

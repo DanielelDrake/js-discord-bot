@@ -21,25 +21,23 @@ const User = require('./schemas/UserSchema')
 
 
 //async functions
-client.on("ready", async() => {
-    await mongoose.connect('mongodb+srv://Daniel:wirklichreal1@discordbot.bfwuhgf.mongodb.net/?retryWrites=true&w=majority',
-    {
-        keepAlive: true
-    })
+client.on("ready", async () => {
+    await mongoose.connect(config.MONGO_URL,
+        {
+            keepAlive: true
+        })
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
 client.on("guildMemberAdd", async (member) => {
     member.guild.channels.reply("Welcome " + member.username + "!")
 
-    console.log('neuen Datensatz für '+ member.username +' anlegen ...');
+    console.log('neuen Datensatz für ' + member.username + ' anlegen ...');
     const newUser = await User.create({
         username: member.username,
         discordId: member.id
     })
     console.log('neuen Datensatz für User: ' + member.username + ' angelegt')
-
-
 })
 
 //prefix for commands
@@ -70,8 +68,10 @@ client.on("messageCreate", async (msg) => {
             .setColor(0x0099FF)
             .setTitle('My Bot')
             .setURL('https://github.com/DanielelDrake/js-discord-bot')
-            .setAuthor({ name: 'Daniel', iconURL: 'https://i.imgur.com/AfFp7pu.png', 
-                url: 'https://github.com/DanielelDrake/js-discord-bot' })
+            .setAuthor({
+                name: 'Daniel', iconURL: 'https://i.imgur.com/AfFp7pu.png',
+                url: 'https://github.com/DanielelDrake/js-discord-bot'
+            })
             .setDescription('Some description here')
             .setThumbnail('https://i.imgur.com/AfFp7pu.png')
             .addFields(
@@ -89,23 +89,16 @@ client.on("messageCreate", async (msg) => {
 
     }
 
-    if(command === 'rl-server') {
+    if (command === 'rl-server') {
         console.log('Server Status for Rocket League requested')
     }
 
-    if(command === 'db') {
-        console.log(' Testweise!!!!! neuen Datensatz für '+ msg.author.username +' anlegen ...');
-        const newUser = await User.create({
-            username: msg.author.username,
-            discordId: msg.author.id
-        })
-        console.log('Testweise!!!!! neuen Datensatz für User: ' + msg.autor.username + ' angelegt')
-    }
+
 
     //admin commands
-    if(command === 'ban') {
+    if (command === 'ban') {
         //check for Admin-Permissions
-        if(msg.member.roles.cache.has('1025086853742866532')) {
+        if (msg.member.roles.cache.has('1025086853742866532')) {
             //log the ban-attempt
             console.log(msg.author.username + " wants to ban somebody")
             //check for args
@@ -115,9 +108,9 @@ client.on("messageCreate", async (msg) => {
             else {
                 //perform ban
                 let victim = msg.mentions.members.first();
-                msg.reply("User " + victim.user.username + " got banned by " + msg.author.username) 
+                msg.reply("User " + victim.user.username + " got banned by " + msg.author.username)
                 victim.ban();
-                
+
             }
         }
         else {
@@ -125,25 +118,50 @@ client.on("messageCreate", async (msg) => {
             msg.reply("Da hast du wohl nicht die nötigen Rechte... Wende dich an einen Admin!")
         }
     }
-    if(command === 'kick') {
+    if (command === 'kick') {
         //check for Admin-Permissions
-        if(msg.member.roles.cache.has('1025086853742866532')) {
+        if (msg.member.roles.cache.has('1025086853742866532')) {
             //log the kick-attempt
             console.log(msg.author.username + " wants to kick somebody")
             //check for args
-            if(!args.length) {
+            if (!args.length) {
                 return msg.reply("You didn't provide any Arguments!")
             }
             else {
                 //perform the kick
                 let victim = msg.mentions.members.first();
-                msg.reply("User " + victim.user.username + " got kicked by " + msg.author.username) 
+                msg.reply("User " + victim.user.username + " got kicked by " + msg.author.username)
                 victim.kick();
             }
         }
         else {
             //respond with error message
             msg.reply("Da hast du wohl nicht die nötigen Rechte... Wende dich an einen Admin!")
+        }
+    }
+    if (command === 'db') {
+        if (msg.member.roles.cache.has('1025086853742866532')) {
+            console.log(msg.author.username + " is searching for User...")
+            const res = await User.find({ username: args[0] });
+            console.log('Username: ' + res[0].username)
+            console.log('Users DiscordId: ' + res[0].discordId)
+            console.log('Admin status: ' + res[0].admin)
+        } else {
+            console.log(msg.author.username + " hat versucht auf die DB zuzugreifen!")
+            msg.reply("Du hast nicht die nötigen Berechtigungen auf diesem Server!")
+        }
+
+    }
+    if (command === 'adduser') {
+        if (msg.member.roles.cache.has('1025086853742866532')) {
+            console.log('neuen Datensatz für ' + msg.author.username + ' anlegen ...');
+            const newUser = await User.create({
+                username: msg.author.username,
+                discordId: msg.author.id
+            })
+            console.log('neuen Datensatz für User: ' + msg.author.username + ' angelegt')
+        } else {
+            console.log("keine Rechte!")
         }
     }
 })
