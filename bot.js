@@ -21,8 +21,6 @@ const client = new Discord.Client({
 
 client.commands = new Collection();
 
-
-
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
 	const command = require(filePath);
@@ -33,8 +31,6 @@ for (const file of commandFiles) {
 		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 	}
 }
-
-
 
 //command handling
 client.on('interactionCreate', async interaction => {
@@ -56,7 +52,6 @@ client.on('interactionCreate', async interaction => {
 	}
     
 })
-
 
 //async functions
 client.on("ready", async () => {
