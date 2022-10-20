@@ -6,6 +6,7 @@ const User = require('./schemas/UserSchema')
 const Discord = require("discord.js");
 const config = require("./config.json");
 const commandsPath = path.join(__dirname, 'commands');
+
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 const { MessageEmbed, makeURLSearchParams, EmbedBuilder, Client, GatewayIntentBits, Collection, messageLink, channelLink } = require("discord.js")
 const client = new Discord.Client({
