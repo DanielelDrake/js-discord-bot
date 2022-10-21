@@ -24,7 +24,7 @@
   "dependencies": {
     "discord.js": "^14.6.0",
     "mariadb": "^3.0.1",
-    "mongoose": "^6.6.5",
+    "mongoose": "^6.6.7",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20"
   }
