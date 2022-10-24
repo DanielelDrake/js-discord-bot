@@ -4,7 +4,6 @@
   "description": "Discord Bot",
   "main": "index.js",
   "scripts": {
-    "test": "",
     "dev": "nodemon bot.js",
     "start": "node bot.js"
   },
