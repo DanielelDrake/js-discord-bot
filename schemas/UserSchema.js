@@ -2,15 +2,21 @@ const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
     username: {
-        type: mongoose.mongoose.SchemaTypes.String,
+        type: mongoose.SchemaTypes.String,
         required: true,
     },
     discordId : {
         type: mongoose.SchemaTypes.String,
         required: true,
     },
-    admin: mongoose.SchemaTypes.Boolean,
-    mod: mongoose.SchemaTypes.Boolean,
+    admin: {
+        type: mongoose.SchemaTypes.Boolean,
+        required: true,
+    },
+    mod: {
+        type: mongoose.SchemaTypes.Boolean,
+        required: false,
+    },
     joined_at: {
         type: mongoose.SchemaTypes.Date,
         required: true,

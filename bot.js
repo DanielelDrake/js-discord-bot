@@ -76,6 +76,7 @@ client.on("guildMemberAdd", async (member) => {
         joined_at: Date.now
     })
     console.log('neuen Datensatz für User: ' + member.username + ' angelegt')
+    //console.log(*Datensatz von Datenbank abrufen*)
     console.log('--------------------------------------------')
 })
 
