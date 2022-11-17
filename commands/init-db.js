@@ -10,6 +10,7 @@ module.exports = {
         .setDescription('Initialises the User-DB'),
     async execute(interaction) {
         //Verbindung zur Datenbank herstellen
+        console.log('db-init:')
         console.log('Connecting ...')
         await mongoose.connect(MONGO_URL, {
             keepAlive: true
@@ -19,8 +20,13 @@ module.exports = {
         //user fetchen
         guild.members.forEach(member => console.log(member.user.username));
 
-        //user in Datenbank eintragen
+        console.log('fetched Members')
 
+        //user in Datenbank eintragen
+        console.log('user in Datenbank eingetragen')
+
+        //ende
+        console.log('finished')
         console.log('-----------------------------------------')
     }
 }
