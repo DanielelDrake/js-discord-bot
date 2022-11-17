@@ -1,13 +1,14 @@
 const { CLIENT_ID, GUILD_ID, BOT_TOKEN, MONGO_URL } = require('../config.json');
-const { SlashCommandBuilder, Guild, Discord, Message} = require('discord.js')
+const { SlashCommandBuilder, GUILD_MEMBERS, Guild, Discord, Message, PermissionFlagsBits, Client } = require('discord.js')
 const { connect } = require('mongoose');
 const mongoose = require('mongoose');
-let guild = Message.guild;
+
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('db-init')
-        .setDescription('Initialises the User-DB'),
+        .setDescription('Initialises the User-DB')
+        .setDefaultMemberPermissions(PermissionFlagsBits.Admin),
     async execute(interaction) {
         //Verbindung zur Datenbank herstellen
         console.log('db-init:')
@@ -18,7 +19,8 @@ module.exports = {
         console.log('Connected to DB')
 
         //user fetchen
-        guild.members.forEach(member => console.log(member.user.username));
+        const membersArr = await interaction.guild.fetch().catch(console.error);
+        console.log(membersArr.members);
 
         console.log('fetched Members')
 
@@ -28,6 +30,7 @@ module.exports = {
         //ende
         console.log('finished')
         console.log('-----------------------------------------')
+
+        interaction.reply("finished!")
     }
 }
-
