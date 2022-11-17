@@ -46,7 +46,6 @@ client.on('interactionCreate', async interaction => {
 
 	try {
 		await command.execute(interaction);
-        console.log(`${interaction.commandName} command was run by ${interaction.user.username}`)
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
